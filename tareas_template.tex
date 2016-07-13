@@ -1,0 +1,232 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% Basado en template de Ted Pavlic (http://www.tedpavlic.com)
+%
+% Mod. para trabajos con código de matlab por Marcial Rodríguez.
+%
+% Quitad los lipsum que son para generar texto random.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	Config Matlab Code
+%----------------------------------------------------------------------------------------
+
+\lstset{language=Matlab,%
+frame = single,
+%basicstyle=\color{red},
+tabsize=4,
+breaklines=true,%
+xleftmargin=5pt,
+xrightmargin=25pt,
+morekeywords={matlab2tikz},
+keywordstyle=\color{blue},%
+morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+%  morecomment=[l][\color{Green}]{...},
+identifierstyle=\color{black},%
+stringstyle=\color{mylilas},
+commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+commentstyle=\color{mygreen},%
+showstringspaces=false,%without this there will be a symbol in the places where there is a space
+numbers=left,%
+numberstyle=\tiny\color{Blue},
+numbersep=9pt, % this defines how far the numbers are from the text
+emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+%emph=[2]{word1,word2}, emphstyle=[2]{style},
+stepnumber=5, % Line numbers go in steps of 5
+}
+
+% Creates a new command to include a matlab script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+
+\newcommand{\matlabscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{}\nobreak
+\nobreak\extramarks{}{#1 Continúa en la página siguiente\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1}{}\nobreak
+\nobreak\extramarks{}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Ejercicio \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\center\framebox[0.90\columnwidth][c]{\begin{minipage}{0.88\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{El vuelo del palomo} % Assignment title
+\newcommand{\hmwkDate}{Julio de 2016} % Due date
+\newcommand{\hmwkCurso}{Aves \& weird stuff} % Course/class
+\newcommand{\hmwkCarrera}{Ingeniería Volátil} % Course/class
+\newcommand{\hmwkUniversidad}{Universidad de la Atalaya} % Course/class
+\newcommand{\hmwkAuthorName}{Marcial Rodríguez} % Your name
+\newcommand{\hmwkNIF}{00000000c} % Your name
+\newcommand{\hmwkMail}{\href{mailto:uborzz@gmail.com}{uborzz@gmail.com}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{0.4in}
+\textsc{\Huge\hmwkUniversidad}\\
+\vspace{0.1in}\textsc{\huge\hmwkCarrera}\\
+\vspace{0.1in}\textsc{\Large\hmwkCurso}\\
+\vspace{0.4in}\huge{\textbf{\hmwkTitle}}\\
+\vspace{4.3in}\large
+%\hyperref[uborzz@gmail.com]{''uborzz@gmail.com''}
+\hmwkDate\\
+\vspace{0.4in}\texttt{\hmwkAuthorName}\\
+\texttt{\hmwkNIF}\\
+\texttt{\hmwkMail}\\
+\date{}
+}
+
+%\author{\textbf{\hmwkAuthorName}}
+
+%\textbf{\hmwkNIF}
+%\textbf{\hmwkMail}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEMA 1
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+
+El problema tal tal...
+
+\begin{equation}
+  \begin{cases}
+    U = sin(x)\\
+    A = cos(x)
+  \end{cases}
+\end{equation}
+\problemAnswer{
+Wololooooo is my answer.
+}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM x
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+Listing \ref{ondaDD} muestra el programa.
+
+%\perlscript{homework_example}{Sample Perl Script With Highlighting}
+
+\matlabscript{ondaDD}{Onda dd y tal}
+
+
+\lipsum[1]
+\end{homeworkProblem}
+
+
+\end{document}
